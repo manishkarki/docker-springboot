@@ -40,12 +40,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-starter-security-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
             <version>1.4.194</version>
+            <scope>test</scope>
         </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -69,7 +78,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>6.4.0.jre8</version>
+            <version>7.2.0.jre8</version>
             <scope>runtime</scope>
         </dependency>
 

@@ -19,27 +19,30 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private NeoUserDetailsService userDetailsService;
+    private NeoUserDetailsService neoUserDetailsService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     public void configureGlobal(final AuthenticationManagerBuilder auth) throws Exception {
         auth.
-            userDetailsService(userDetailsService)
+            userDetailsService(neoUserDetailsService)
             .passwordEncoder(passwordEncoder);
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
+           .authorizeRequests()
                 .antMatchers("/oauth/token").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
+           .formLogin()
+                .loginPage("/login")
                 .and()
-                .csrf().disable();
+           .httpBasic()
+                .and()
+           .csrf().disable();
     }
 
     /**

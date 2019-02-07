@@ -6,12 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author mkarki
  */
-@Component
+@Service
 public class UserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
     private final UserRepository repo;
@@ -35,7 +35,7 @@ public class UserService {
         int offset = user.getUserName().chars()
                 .sum();
         long userId = (leftLimit + (long)(Math.random() *(offset + rightLimit - leftLimit)));
-        LOGGER.info("user id was calculated to be:", userId);
+        LOGGER.info("user id was calculated to be:{}", userId);
         return userId;
     }
 

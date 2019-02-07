@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DemoRestController {
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    public DemoRestController(UserService userService) {
+        this.userService = userService;
+    }
 
-    @GetMapping("/docker/spring")
+    @GetMapping("/demo")
     public String demo() {
         return "docker spring app";
     }

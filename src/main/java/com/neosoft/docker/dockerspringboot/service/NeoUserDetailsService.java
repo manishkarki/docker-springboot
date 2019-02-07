@@ -6,18 +6,22 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
 /**
  * @author mkarki
  */
-@Component
+@Service
 public class NeoUserDetailsService implements UserDetailsService {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public NeoUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository
