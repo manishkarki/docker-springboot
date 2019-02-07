@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class DockerSpringbootApplication {
-    @Bean
+
     public CommandLineRunner setupDefaultUser(UserService service) {
         return args -> service.save(new User(
                 "user", //username
