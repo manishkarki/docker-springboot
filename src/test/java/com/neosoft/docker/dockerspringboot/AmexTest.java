@@ -75,4 +75,18 @@ public class AmexTest {
         assertEquals(longestRepeatingSubString("manish"), "manish");
     }
 
+    @Test
+    public void random() {
+        Long userId = get();
+        System.out.println(userId);
+    }
+
+    private Long get() {
+        Long leftLimit = 1L;
+        Long rightLimit = 2000L;
+        int offset = "manish".chars()
+                .sum();
+        return (leftLimit + (long)(Math.random() *(offset + rightLimit - leftLimit)));
+    }
+
 }

@@ -23,10 +23,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void save(User user){
+    public User save(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setId(getRandomUserId(user));
-        repo.save(user);
+        return repo.save(user);
     }
 
     private Long getRandomUserId(User user) {
@@ -36,7 +36,7 @@ public class UserService {
                 .sum();
         long userId = (leftLimit + (long)(Math.random() *(offset + rightLimit - leftLimit)));
         LOGGER.info("user id was calculated to be:", userId);
-        return (leftLimit + (long)(Math.random() *(offset + rightLimit - leftLimit)));
+        return userId;
     }
 
 }
